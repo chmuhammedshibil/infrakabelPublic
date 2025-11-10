@@ -1,19 +1,31 @@
 import React, { useState } from 'react';
-import { Search, User, Heart, ShoppingBag, Menu, X } from 'lucide-react';
-import logo from '../../assets/logoh.png'
+import { Search, User, Heart, ShoppingBag, Menu, X, ChevronDown } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import logo from '../../assets/logoh.png';
+import ukFlag from '../../assets/english.png';
+import deFlag from '../../assets/germen flag.webp';
+
+const navLinks = [
+  { name: 'Home', path: '/' },
+  { name: 'shop', path: '/shop' },
+  { name: 'About', path: '/about' },
+  // { name: 'Service', path: '/service' },
+  { name: 'Contact', path: '/contact' },
+  { name: 'Blog', path: '/blog' },
+  { name: 'FAQ', path: '/faq' }
+];
+
+// Updated languages array to use image paths
+const languages = [
+  { code: 'en', name: 'English', flag: ukFlag }, 
+  { code: 'de', name: 'Deutsch', flag: deFlag }  
+];
 
 const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState('Home');
-
-  const navLinks = [
-    'Home',
-    'About',
-    'Service',
-    'Contact',
-    'Blog',
-    'FAQ'
-  ];
+  const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
+  const [currentLang, setCurrentLang] = useState(languages[0]);
 
   return (
     <header className="fixed w-full top-0 z-50 bg-transparent font-sans">
@@ -21,28 +33,33 @@ const Header: React.FC = () => {
         <div className="flex justify-between items-center py-4">
 
           <div className="flex-shrink-0 flex items-center">
-            <div className="text-2xl font-bold tracking-wider text-black flex items-center">
-               <div className="h-[10px] w-[180px]  rounded-full flex items-center justify-center mr-2">
-                 <img src={logo} alt="" className='text-white' />
-               </div>
-            </div>
+            <Link
+              to="/"
+              onClick={() => setActiveLink('Home')}
+              className="text-2xl font-bold tracking-wider text-black flex items-center"
+            >
+              <div className="h-[100px] w-[150px] flex items-center justify-center mr-2">
+                <img src={logo} alt="Logo" />
+              </div>
+            </Link>
           </div>
 
           <nav className="hidden md:flex space-x-8 items-center justify-center flex-1">
             {navLinks.map((link) => (
-              <button
-                key={link}
-                onClick={() => setActiveLink(link)}
+              <Link
+                key={link.name}
+                to={link.path}
+                onClick={() => setActiveLink(link.name)}
                 className={`relative text-sm uppercase tracking-widest font-medium transition-colors duration-300 py-2
-                  ${activeLink === link ? 'text-white/70' : 'text-white hover:text-black'}
+                  ${activeLink === link.name ? 'text-white' : 'text-gray-300 hover:text-white'}
                   group`
                 }
               >
-                {link}
-                <span className={`absolute bottom-0 left-1/2 h-[2px] bg-black transition-all duration-300 ease-out -translate-x-1/2
-                  ${activeLink === link ? 'w-full' : 'w-0 group-hover:w-1/2'}`}
+                {link.name}
+                <span className={`absolute bottom-0 left-1/2 h-[2px] bg-white transition-all duration-300 ease-out -translate-x-1/2
+                  ${activeLink === link.name ? 'w-full' : 'w-0 group-hover:w-1/2'}`}
                 />
-              </button>
+              </Link>
             ))}
           </nav>
 
@@ -56,6 +73,35 @@ const Header: React.FC = () => {
               <Search className="absolute right-3 top-2.5 h-4 w-4 text-gray-500" />
             </div>
 
+            <div className="relative">
+              <button
+                onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
+                className="flex items-center space-x-2 text-white hover:text-gray-300 transition-colors focus:outline-none"
+              >
+                <img src={currentLang.flag} alt={currentLang.name} className="h-4 w-6 object-cover rounded-sm" />
+                <span className="text-sm font-medium uppercase">{currentLang.code}</span>
+                <ChevronDown size={14} />
+              </button>
+
+              {isLangMenuOpen && (
+                <div className="absolute right-0 mt-2 w-36 bg-white rounded-md shadow-lg py-1 z-50 ring-1 ring-black ring-opacity-5">
+                  {languages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => {
+                        setCurrentLang(lang);
+                        setIsLangMenuOpen(false);
+                      }}
+                      className="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      <img src={lang.flag} alt={lang.name} className="h-4 w-6 object-cover rounded-sm mr-3" />
+                      {lang.name}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
             <div className="flex items-center space-x-4 text-white">
               <button className="hover:scale-110 transition-transform"><User size={20} /></button>
               <button className="hover:scale-110 transition-transform"><Heart size={20} /></button>
@@ -67,8 +113,8 @@ const Header: React.FC = () => {
           </div>
 
           <div className="md:hidden flex items-center space-x-4">
-             <button className="text-white"><ShoppingBag size={20} /></button>
-             <button
+            <button className="text-white"><ShoppingBag size={20} /></button>
+            <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="text-white focus:outline-none"
             >
@@ -80,35 +126,50 @@ const Header: React.FC = () => {
 
       <div className={`md:hidden absolute w-full bg-white/95 backdrop-blur-md transition-all duration-300 ease-in-out overflow-hidden ${isMobileMenuOpen ? 'max-h-screen opacity-100 border-b border-gray-200' : 'max-h-0 opacity-0'}`}>
         <div className="px-4 pt-2 pb-6 space-y-4 flex flex-col items-center">
-           <div className="relative w-full mt-4">
-              <input
-                type="text"
-                placeholder="Search..."
-                className="w-full pl-4 pr-10 py-3 rounded-full border border-gray-300 bg-gray-50 focus:outline-none"
-              />
-              <Search className="absolute right-4 top-3.5 h-5 w-5 text-gray-500" />
-            </div>
+          <div className="relative w-full mt-4">
+            <input
+              type="text"
+              placeholder="Search..."
+              className="w-full pl-4 pr-10 py-3 rounded-full border border-gray-300 bg-gray-50 focus:outline-none"
+            />
+            <Search className="absolute right-4 top-3.5 h-5 w-5 text-gray-500" />
+          </div>
 
           {navLinks.map((link) => (
-            <button
-              key={link}
+            <Link
+              key={link.name}
+              to={link.path}
               onClick={() => {
-                setActiveLink(link);
+                setActiveLink(link.name);
                 setIsMobileMenuOpen(false);
               }}
               className={`text-lg uppercase tracking-widest font-medium py-2 relative w-fit
-                 ${activeLink === link ? 'text-black' : 'text-gray-600'}`
+                 ${activeLink === link.name ? 'text-black' : 'text-gray-600'}`
               }
             >
-              {link}
-               <span className={`absolute bottom-0 left-1/2 h-[2px] bg-black transition-all duration-300 ease-out -translate-x-1/2
-                  ${activeLink === link ? 'w-full' : 'w-0'}`}
-                />
-            </button>
+              {link.name}
+              <span className={`absolute bottom-0 left-1/2 h-[2px] bg-black transition-all duration-300 ease-out -translate-x-1/2
+                  ${activeLink === link.name ? 'w-full' : 'w-0'}`}
+              />
+            </Link>
           ))}
-          <div className="flex space-x-8 pt-4 mt-4 border-t border-gray-200 w-full justify-center">
-             <button className="flex flex-col items-center text-gray-700"><User size={24} /><span className="text-xs mt-1">Account</span></button>
-             <button className="flex flex-col items-center text-gray-700"><Heart size={24} /><span className="text-xs mt-1">Wishlist</span></button>
+
+          <div className="flex items-center space-x-4 py-4 border-t border-b border-gray-200 w-full justify-center">
+            {languages.map((lang) => (
+              <button
+                key={lang.code}
+                onClick={() => setCurrentLang(lang)}
+                className={`flex items-center space-x-2 px-3 py-1 rounded-full border ${currentLang.code === lang.code ? 'border-black bg-gray-100' : 'border-transparent'}`}
+              >
+                <img src={lang.flag} alt={lang.name} className="h-5 w-7 object-cover rounded-sm" />
+                <span className={`text-sm font-medium ${currentLang.code === lang.code ? 'text-black' : 'text-gray-500'}`}>{lang.code.toUpperCase()}</span>
+              </button>
+            ))}
+          </div>
+
+          <div className="flex space-x-8 pt-4 mt-4 w-full justify-center">
+            <button className="flex flex-col items-center text-gray-700"><User size={24} /><span className="text-xs mt-1">Account</span></button>
+            <button className="flex flex-col items-center text-gray-700"><Heart size={24} /><span className="text-xs mt-1">Wishlist</span></button>
           </div>
         </div>
       </div>
