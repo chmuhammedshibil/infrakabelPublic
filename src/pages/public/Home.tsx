@@ -1,8 +1,13 @@
 import React from 'react'
+import HeroCarousel from '../../components/public/home/HeroCarousel'
 
-const Home = () => {
+const Home: React.FC = () => {
   return (
-    <div>Home</div>
+    <main>
+      <HeroCarousel />
+      
+      
+    </main>
   )
 }
 
