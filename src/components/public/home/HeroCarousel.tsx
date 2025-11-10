@@ -23,7 +23,7 @@ const SLIDE_DATA = [
     
 ];
 
-const HeroCarousel = () => {
+const HeroCarousel: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
