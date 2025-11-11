@@ -1,6 +1,6 @@
 import React, { useState } from 'react'; 
 import ShopHero from '../../components/public/shop/ShopHero';
-import ProductCard from '../../components/common/ProductCard';
+import ProductCard, { type Product } from '../../components/common/ProductCard';
 import p1 from '../../assets/p1.jpg'
 import p2 from '../../assets/p2.jpg'
 import p3 from '../../assets/p3.jpg'
@@ -11,55 +11,62 @@ import p7 from '../../assets/p7.jpg'
 
 
 
-const shopProducts = [
+const shopProducts: Product[] = [
   {
     "id": 1,
     "name": "Fiber Optic Cable - Single Mode",
     "price": 120.00,
     "image": p1,
-    "category": "Cables"
+    "category": "Cables",
+    "description": "High-quality single-mode fiber optic cable for long-distance, high-bandwidth applications. Perfect for telecommunications and data center backbones. Low attenuation and minimal dispersion."
   },
   {
     "id": 2,
     "name": "Industrial Network Switch",
     "price": 450.50,
     "image": p2,
-    "category": "Networking"
+    "category": "Networking",
+    "description": "High-quality single-mode fiber optic cable for long-distance, high-bandwidth applications. Perfect for telecommunications and data center backbones. Low attenuation and minimal dispersion."
   },
   {
     "id": 3,
     "name": "SC/APC Fiber Connector",
     "price": 5.99,
     "image": p3,
-    "category": "Connectors"
+    "category": "Connectors",
+    "description": "High-quality single-mode fiber optic cable for long-distance, high-bandwidth applications. Perfect for telecommunications and data center backbones. Low attenuation and minimal dispersion."
   },
   {
     "id": 4,
     "name": "Fiber Optic Splicer",
     "price": 1999.00,
     "image": p4,
-    "category": "Tools"
+    "category": "Tools",
+    "description": "High-quality single-mode fiber optic cable for long-distance, high-bandwidth applications. Perfect for telecommunications and data center backbones. Low attenuation and minimal dispersion."
   },
   {
     "id": 5,
     "name": "Rack Mount Enclosure",
     "price": 89.00,
     "image": p5,
-    "category": "Enclosures"
+    "category": "Enclosures",
+    "description": "High-quality single-mode fiber optic cable for long-distance, high-bandwidth applications. Perfect for telecommunications and data center backbones. Low attenuation and minimal dispersion."
   },
   {
     "id": 6,
     "name": "Fiber Optic Cable - Multi-Mode",
     "price": 95.00,
     "image": p6,
-    "category": "Cables"
+    "category": "Cables",
+    "description": "High-quality single-mode fiber optic cable for long-distance, high-bandwidth applications. Perfect for telecommunications and data center backbones. Low attenuation and minimal dispersion."
   },
   {
     "id": 7,
     "name": "Fiber Optic Power Meter",
     "price": 150.00,
     "image": p7,
-    "category": "Tools"
+    "category": "Tools",
+    "description": "High-quality single-mode fiber optic cable for long-distance, high-bandwidth applications. Perfect for telecommunications and data center backbones. Low attenuation and minimal dispersion."
   }
 ];
 

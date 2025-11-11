@@ -15,7 +15,6 @@ const navLinks = [
   { name: 'FAQ', path: '/faq' }
 ];
 
-// Updated languages array to use image paths
 const languages = [
   { code: 'en', name: 'English', flag: ukFlag }, 
   { code: 'de', name: 'Deutsch', flag: deFlag }  
@@ -103,7 +102,7 @@ const Header: React.FC = () => {
             </div>
 
             <div className="flex items-center space-x-4 text-white">
-              <button className="hover:scale-110 transition-transform"><User size={20} /></button>
+              <Link to='/auth' className="hover:scale-110 transition-transform"><User size={20} /></Link>
               <button className="hover:scale-110 transition-transform"><Heart size={20} /></button>
               <button className="relative hover:scale-110 transition-transform">
                 <ShoppingBag size={20} />
@@ -113,10 +112,10 @@ const Header: React.FC = () => {
           </div>
 
           <div className="md:hidden flex items-center space-x-4">
-            <button className="text-white"><ShoppingBag size={20} /></button>
+            <button className="text-gray-500"><ShoppingBag size={20} /></button>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-white focus:outline-none"
+              className="text-gray-500 focus:outline-none"
             >
               {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>

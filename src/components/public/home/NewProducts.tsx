@@ -13,28 +13,32 @@ const productsData = [
     "name": "Fiber Optic Attenuator",
     "price": 45.00,
     "image": p1,
-    "category": "Components"
+    "category": "Components",
+    "description": "High-quality single-mode fiber optic cable for long-distance, high-bandwidth applications. Perfect for telecommunications and data center backbones. Low attenuation and minimal dispersion."
   },
   {
     "id": 12,
     "name": "OTDR Launch Cable Box",
     "price": 199.99,
     "image": p2,
-    "category": "Tools"
+    "category": "Tools",
+    "description": "High-quality single-mode fiber optic cable for long-distance, high-bandwidth applications. Perfect for telecommunications and data center backbones. Low attenuation and minimal dispersion."
   },
   {
     "id": 13,
     "name": "Multi-mode Fiber Patch Cord",
     "price": 12.50,
     "image": p3,
-    "category": "Cables"
+    "category": "Cables",
+    "description": "High-quality single-mode fiber optic cable for long-distance, high-bandwidth applications. Perfect for telecommunications and data center backbones. Low attenuation and minimal dispersion."
   },
   {
     "id": 14,
     "name": "Fiber Optic Cleaning Kit",
     "price": 75.00,
     "image": p4,
-    "category": "Tools"
+    "category": "Tools",
+    "description": "High-quality single-mode fiber optic cable for long-distance, high-bandwidth applications. Perfect for telecommunications and data center backbones. Low attenuation and minimal dispersion."
   }
 ];
 

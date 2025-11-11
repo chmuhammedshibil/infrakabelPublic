@@ -2,12 +2,14 @@ import React from 'react';
 import { Heart, ShoppingCart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-interface Product {
+// 1. Define the Product type here
+export interface Product {
   id: number;
   name: string;
   price: number;
   image: string;
   category: string;
+  description: string; // Add description for the detail page
 }
 
 interface ProductCardProps {
@@ -35,7 +37,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <div className="mt-4 flex justify-between">
         <div>
           <h3 className="text-sm text-gray-700">
-            <Link to='/'>
+            <Link to={`/product/${product.id}`}>
               <span aria-hidden="true" className="absolute inset-0" />
               {product.name}
             </Link>

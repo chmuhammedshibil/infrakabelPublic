@@ -13,28 +13,32 @@ const productsData = [
     "name": "Fiber Optic Cable - Single Mode",
     "price": 120.00,
     "image": p1,
-    "category": "Cables"
+    "category": "Cables",
+    "description": "High-quality single-mode fiber optic cable for long-distance, high-bandwidth applications. Perfect for telecommunications and data center backbones. Low attenuation and minimal dispersion."
   },
   {
     "id": 2,
     "name": "Industrial Network Switch",
     "price": 450.50,
     "image": p2,
-    "category": "Networking"
+    "category": "Networking",
+    "description": "High-quality single-mode fiber optic cable for long-distance, high-bandwidth applications. Perfect for telecommunications and data center backbones. Low attenuation and minimal dispersion."
   },
   {
     "id": 3,
     "name": "Fusion Splicer Kit Pro",
     "price": 2500.00,
     "image": p3,
-    "category": "Tools"
+    "category": "Tools",
+    "description": "High-quality single-mode fiber optic cable for long-distance, high-bandwidth applications. Perfect for telecommunications and data center backbones. Low attenuation and minimal dispersion."
   },
   {
     "id": 4,
     "name": "Rack Mount Enclosure 1U",
     "price": 85.00,
     "image": p4,
-    "category": "Hardware"
+    "category": "Hardware",
+    "description": "High-quality single-mode fiber optic cable for long-distance, high-bandwidth applications. Perfect for telecommunications and data center backbones. Low attenuation and minimal dispersion."
   }
 ];
 
