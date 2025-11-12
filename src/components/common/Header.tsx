@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, User, Heart, ShoppingBag, Menu, X} from 'lucide-react';
+import { Search, User, Heart, ShoppingBag, Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logoh.png';
 import ukFlag from '../../assets/english.png';
@@ -130,28 +130,27 @@ const Header: React.FC = () => {
                 />
               </div>
 
-        {/* Language Switcher (Desktop simplified) */}
-<div className="flex items-center">
-  <button
-    onClick={() =>
-      setCurrentLang(
-        currentLang.code === 'en' ? languages[1] : languages[0]
-      )
-    }
-    className={`flex items-center space-x-2 focus:outline-none transition-all border border-transparent hover:border-gray-300 rounded-full px-2 py-1 ${
-      isScrolled ? 'text-gray-800' : 'text-white'
-    }`}
-  >
-    <img
-      src={currentLang.code === 'en' ? deFlag : ukFlag}
-      alt={currentLang.code === 'en' ? 'Deutsch' : 'English'}
-      className="h-5 w-7 object-cover rounded-sm"
-    />
-    <span className="text-sm font-medium uppercase">
-      {currentLang.code === 'en' ? 'DE' : 'EN'}
-    </span>
-  </button>
-</div>
+              {/* Language Switcher (Desktop simplified) */}
+              <div className="flex items-center">
+                <button
+                  onClick={() =>
+                    setCurrentLang(
+                      currentLang.code === 'en' ? languages[1] : languages[0]
+                    )
+                  }
+                  className={`flex items-center space-x-2 focus:outline-none transition-all border border-transparent hover:border-gray-300 rounded-full px-2 py-1 ${isScrolled ? 'text-gray-800' : 'text-white'
+                    }`}
+                >
+                  <img
+                    src={currentLang.code === 'en' ? deFlag : ukFlag}
+                    alt={currentLang.code === 'en' ? 'Deutsch' : 'English'}
+                    className="h-5 w-7 object-cover rounded-sm"
+                  />
+                  <span className="text-sm font-medium uppercase">
+                    {currentLang.code === 'en' ? 'DE' : 'EN'}
+                  </span>
+                </button>
+              </div>
 
 
               {/* User / Wishlist / Cart */}
@@ -232,8 +231,8 @@ const Header: React.FC = () => {
                     setIsMobileMenuOpen(false);
                   }}
                   className={`text-lg uppercase tracking-widest font-semibold transition-all duration-200 ${activeLink === link.name
-                      ? 'text-black border-b-2 border-black pb-1'
-                      : 'text-gray-700 hover:text-black'
+                    ? 'text-black border-b-2 border-black pb-1'
+                    : 'text-gray-700 hover:text-black'
                     }`}
                 >
                   {link.name}
@@ -248,8 +247,8 @@ const Header: React.FC = () => {
                   key={lang.code}
                   onClick={() => setCurrentLang(lang)}
                   className={`flex items-center space-x-2 px-3 py-1.5 rounded-full border transition ${currentLang.code === lang.code
-                      ? 'border-black bg-gray-100 text-black'
-                      : 'border-transparent text-gray-600 hover:text-black'
+                    ? 'border-black bg-gray-100 text-black'
+                    : 'border-transparent text-gray-600 hover:text-black'
                     }`}
                 >
                   <img
@@ -262,7 +261,7 @@ const Header: React.FC = () => {
               ))}
             </div>
 
-           
+
           </div>
         </div>
 
