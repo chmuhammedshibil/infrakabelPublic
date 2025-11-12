@@ -57,7 +57,7 @@ const Header: React.FC = () => {
         ${showHeader ? 'translate-y-0' : '-translate-y-full'}
       `}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className=" mx-auto px-4 sm:px-6 lg:px-8">
           <div
             className={`flex justify-between items-center ${isScrolled ? 'py-3' : 'py-5'
               } transition-all duration-300`}
