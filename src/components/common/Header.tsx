@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, User, Heart, ShoppingBag, Menu, X, ChevronDown } from 'lucide-react';
+import { Search, User, Heart, ShoppingBag, Menu, X} from 'lucide-react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logoh.png';
 import ukFlag from '../../assets/english.png';
@@ -22,7 +22,6 @@ const languages = [
 const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState('Home');
-  const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
   const [currentLang, setCurrentLang] = useState(languages[0]);
   const [isScrolled, setIsScrolled] = useState(false);
   const [showHeader, setShowHeader] = useState(true);
@@ -131,46 +130,29 @@ const Header: React.FC = () => {
                 />
               </div>
 
-              {/* Language */}
-              <div className="relative">
-                <button
-                  onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-                  className={`flex items-center space-x-1 focus:outline-none ${isScrolled ? 'text-gray-800' : 'text-white'
-                    }`}
-                >
-                  <img
-                    src={currentLang.flag}
-                    alt={currentLang.name}
-                    className="h-4 w-6 object-cover rounded-sm"
-                  />
-                  <span className="text-xs font-medium uppercase">
-                    {currentLang.code}
-                  </span>
-                  <ChevronDown size={12} />
-                </button>
+        {/* Language Switcher (Desktop simplified) */}
+<div className="flex items-center">
+  <button
+    onClick={() =>
+      setCurrentLang(
+        currentLang.code === 'en' ? languages[1] : languages[0]
+      )
+    }
+    className={`flex items-center space-x-2 focus:outline-none transition-all border border-transparent hover:border-gray-300 rounded-full px-2 py-1 ${
+      isScrolled ? 'text-gray-800' : 'text-white'
+    }`}
+  >
+    <img
+      src={currentLang.code === 'en' ? deFlag : ukFlag}
+      alt={currentLang.code === 'en' ? 'Deutsch' : 'English'}
+      className="h-5 w-7 object-cover rounded-sm"
+    />
+    <span className="text-sm font-medium uppercase">
+      {currentLang.code === 'en' ? 'DE' : 'EN'}
+    </span>
+  </button>
+</div>
 
-                {isLangMenuOpen && (
-                  <div className="absolute right-0 mt-2 w-32 bg-white rounded-md shadow-lg py-1 z-50 ring-1 ring-black ring-opacity-5">
-                    {languages.map((lang) => (
-                      <button
-                        key={lang.code}
-                        onClick={() => {
-                          setCurrentLang(lang);
-                          setIsLangMenuOpen(false);
-                        }}
-                        className="flex items-center w-full px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-100"
-                      >
-                        <img
-                          src={lang.flag}
-                          alt={lang.name}
-                          className="h-4 w-6 object-cover rounded-sm mr-2"
-                        />
-                        {lang.name}
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
 
               {/* User / Wishlist / Cart */}
               <div
